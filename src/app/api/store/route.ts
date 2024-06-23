@@ -1,6 +1,6 @@
 
-import type { NextApiRequest } from 'next';
-export async function GET(request: NextApiRequest) {
+import { NextRequest } from 'next/server';
+export async function GET(request: NextRequest) {
     "use server"
     console.log("hererer");
 
