@@ -5,32 +5,8 @@ import axios from "axios";
 import { FaGreaterThan } from "react-icons/fa6";
 import StarRating from "./StarRating";
 import { IoMdCall } from "react-icons/io";
-interface Store {
-  name: string;
-  address: string;
-  pincode: string;
-  latitude: string;
-  longitude: string;
-  phoneNumber: string;
-  area: string;
-  dealerOperationHours: Record<string, string>;
-  storePageUrl: string;
-  dealerContent: Array<{ section: string; content: string }>;
-  dealerId: string;
-  seoStoreServices: Record<string, unknown>;
-  type: string;
-  additionalPhones: string;
-  gmbMapUrl: string;
-  city: string;
-  state: string;
-  averageRating: number;
-}
+import { CityStateMap, Store } from "../../types";
 
-interface CityStateMap {
-  [key: string]: {
-    [key: string]: Store[];
-  };
-}
 const StoreLocator: React.FC = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: String(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY),
@@ -89,9 +65,18 @@ const StoreLocator: React.FC = () => {
     }
   }, [state, city, cityStateMap]);
 
-  if (loadError) return <p>Error loading maps</p>;
-  if (!isLoaded) return <p>Loading Maps</p>;
-  console.log({ state, city, stores, cityStateMap, center });
+  if (loadError)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p>Error loading maps</p>{" "}
+      </div>
+    );
+  if (!isLoaded)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p>Loading Maps.....</p>{" "}
+      </div>
+    );
 
   return (
     <div className="w-full h-[100dvh] md:h-screen flex items-center justify-center overflow-y-auto">
