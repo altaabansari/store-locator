@@ -94,9 +94,9 @@ const StoreLocator: React.FC = () => {
   console.log({ state, city, stores, cityStateMap, center });
 
   return (
-    <div className="w-full h-screen flex items-center justify-center overflow-y-auto">
-      <div className="flex h-[80vh] md:h-[60vh] w-[90%] md:w-[70%] flex-col md:flex-row ">
-        <div className=" w-full md:w-1/2 h-full">
+    <div className="w-full h-[100dvh] md:h-screen flex items-center justify-center overflow-y-auto">
+      <div className="md:py-0 py-2 flex h-[90vh] md:h-[60vh] w-[90%] md:w-[70%] flex-col md:flex-row gap-[20px] md:gap-0  ">
+        <div className=" w-full md:w-1/2 h-[60%] md:h-full overflow-y-auto">
           <div className=" flex w-[90%]  items-center  gap-[30px]">
             <div className="mb-4 w-1/2">
               <label
@@ -144,7 +144,7 @@ const StoreLocator: React.FC = () => {
               </select>
             </div>
           </div>
-          <div className="h-[80%]  overflow-y-auto bg-[#000] py-1 containerScroll">
+          <div className="h-[100%]  md:h-[80%]  overflow-y-auto bg-[#000] py-1 containerScroll">
             <p className="text-[#fff] text-[14px] font-bold px-2">
               {stores?.length || 0} results
             </p>
@@ -187,7 +187,7 @@ const StoreLocator: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="flex-2 border-2 bg-red h-full w-full md:w-1/2">
+        <div className=" h-[40%] md:h-full w-full md:w-1/2">
           <GoogleMap
             mapContainerStyle={{ width: "100%", height: "100%" }}
             zoom={zoom}
